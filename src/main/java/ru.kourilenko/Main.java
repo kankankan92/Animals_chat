@@ -1,11 +1,16 @@
 package ru.kourilenko;
 
+import java.time.LocalDateTime;
+
 public class Main {
     public static void main(String[] args) {
-        Chat chat = new Chat();
-        chat.addUser();
-        chat.addUser();
-        System.out.println(chat.users.get(0).name);
+//        Chat chat = new Chat();
+//        chat.addUser();
+//        chat.addUser();
+//        chat.deleteUser();
+//        System.out.println(chat.getUserByName("Настя"));
+//        chat.loginUser();
+        Dialog.dialog();
 
 
     }
