@@ -1,12 +1,12 @@
-package ru.kourilenko;
+package ru.kourilenko.entity;
 
 public class Male extends User {
-    Male(String name) {
+    public Male(String name) {
         super(name);
     }
 
     @Override
-    String getGender() {
+    public String getGender() {
         return "муж";
     }
 }

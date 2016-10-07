@@ -1,12 +1,12 @@
-package ru.kourilenko;
+package ru.kourilenko.entity;
 
 public class Female extends User {
-    Female(String name) {
+    public Female(String name) {
         super(name);
     }
 
     @Override
-    String getGender() {
+    public String getGender() {
         return "жен";
     }
 }

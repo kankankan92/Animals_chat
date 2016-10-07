@@ -7,11 +7,17 @@ public class Main {
 //        Chat chat = new Chat();
 //        chat.addUser();
 //        chat.addUser();
-//        chat.deleteUser();
-//        System.out.println(chat.getUserByName("Настя"));
 //        chat.loginUser();
-        Dialog.dialog();
+//        chat.writeSpecificBrow();
+//        chat.writeSpecificBrow();
+//        chat.writeSpecificBrow();
+//        chat.writeSpecificBrow();
+//        chat.loginUser();
+//        chat.readMessages();
+//        chat.deleteAllMessagesUser("Настя");
+//        chat.readMessages();
 
+        Dialog.dialog();
 
     }
 }
