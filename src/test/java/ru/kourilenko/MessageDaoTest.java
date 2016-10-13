@@ -1,17 +1,38 @@
 package ru.kourilenko;
 import org.junit.*;
+import ru.kourilenko.dao.UserDao;
+import ru.kourilenko.entity.Female;
+import ru.kourilenko.entity.Male;
 import ru.kourilenko.entity.Message;
-import ru.kourilenko.fake_dao.MessageDao;
-import ru.kourilenko.fake_dao.Storage;
+import ru.kourilenko.dao.MessageDao;
+import ru.kourilenko.entity.User;
+import ru.kourilenko.interfaces.IUserDao;
 
 import java.time.LocalDateTime;
 
 public class MessageDaoTest {
     MessageDao messageDao = new MessageDao();
+    static UserDao userDao = new UserDao();
+
+    @BeforeClass
+    public static void beforeClass(){
+        User user = new Female("Nastia");
+        User user1 = new Male("Vova");
+        userDao.create(user);
+        userDao.create(user1);
+    }
+
+    @AfterClass
+    public static void afterClass(){
+        userDao.deleteUser("Nastia");
+        userDao.deleteUser("Vova");
+    }
 
     @Before
     public void before(){
-        Storage.getInstance().messages.clear();
+        messageDao.deleteAllMessagesUser("Nastia");
+        messageDao.deleteAllMessagesUser("Vova");
+
     }
 
     @Test

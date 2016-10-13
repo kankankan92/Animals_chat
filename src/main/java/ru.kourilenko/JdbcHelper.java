@@ -17,7 +17,7 @@ public class JdbcHelper {
         Statement stmt = null;
         ResultSet rs = null;
         try {
-            stmt = getConnection().createStatement();
+            stmt = getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -5,7 +5,7 @@ import ru.kourilenko.entity.Male;
 import ru.kourilenko.entity.Message;
 import ru.kourilenko.entity.User;
 import ru.kourilenko.fake_dao.MessageDao;
-import ru.kourilenko.fake_dao.UserDao;
+import ru.kourilenko.dao.UserDao;
 import ru.kourilenko.interfaces.IMessageDao;
 import ru.kourilenko.interfaces.IUserDao;
 

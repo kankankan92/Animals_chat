@@ -16,9 +16,9 @@ public class UserDao implements IUserDao {
 
     @Override
     public void create(User user) {
-        String query = "insert into users (id, name, gender) values (:id, ':name', ':gender');"
+        String query = "insert into users (name, gender) values (':name', ':gender');"
 //        String query = "insert into users (id, name, gender) values (" + user.getId() + ", " + user.getName() + ", " + user.getGender() + ");";
-                .replace(":id", user.getId().toString())
+//                .replace(":id", user.getId().toString())
                 .replace(":name", user.getName())
                 .replace(":gender", user instanceof Male ? "m" : "f");
         JdbcHelper.runQuery(query);
@@ -30,7 +30,7 @@ public class UserDao implements IUserDao {
         ResultSet rs = JdbcHelper.getResult(query);
         boolean check = false;
         try {
-            rs.next();
+            rs.first();
             check = rs.getInt(1) == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,7 +50,6 @@ public class UserDao implements IUserDao {
                 } else {
                     user = new Female(rs.getString("name"));
                 }
-                user.setId(rs.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,7 +76,6 @@ public class UserDao implements IUserDao {
                 } else {
                     user = new Female(rs.getString("name"));
                 }
-                user.setId(rs.getInt("id"));
                 userList.add(user);
             }
         } catch (SQLException e) {
