@@ -59,6 +59,8 @@ public class UserDao implements IUserDao {
 
     @Override
     public void deleteUser(String name) {
+        MessageDao messageDao = new MessageDao();
+        messageDao.deleteAllMessagesUser(name);
         String query = "delete from users where name = '" + name + "';";
         JdbcHelper.runQuery(query);
     }

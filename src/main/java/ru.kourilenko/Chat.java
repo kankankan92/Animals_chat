@@ -4,7 +4,7 @@ import ru.kourilenko.entity.Female;
 import ru.kourilenko.entity.Male;
 import ru.kourilenko.entity.Message;
 import ru.kourilenko.entity.User;
-import ru.kourilenko.fake_dao.MessageDao;
+import ru.kourilenko.dao.MessageDao;
 import ru.kourilenko.dao.UserDao;
 import ru.kourilenko.interfaces.IMessageDao;
 import ru.kourilenko.interfaces.IUserDao;
@@ -20,19 +20,19 @@ public class Chat {
 
     public void writeSpecificBrow() { //Написать конкретному челу
         System.out.println("Введите имя пользователя, которому хотите отправить письмо:");
-        while (true) {
+//        while (true) {
             Scanner scanner = new Scanner(System.in);
             String name = scanner.nextLine();
             if (userDao.checkExistenceUser(name)) {
                 System.out.println("Введите сообщения для пользователя " + name + ":");
                 Message message = new Message(scanner.nextLine(), currentUser.getName(), name, LocalDateTime.now());
                 messageDao.create(message);
-                break;
+//                break;
             } else {
                 System.out.println("Пользователя с таким именем не существует. Попробуйте еще раз:");
             }
         }
-    }
+//    }
 
     public void writeMyGroup() {
         System.out.println("Введите сообщение, которое вы хотите отправить всем пользователям вашего пола в данном чате:");
@@ -117,17 +117,16 @@ public class Chat {
         }
     }
 
-    public void loginUser() {
+    public boolean loginUser() {
         System.out.println("Введите имя пользователя:");
-        while (true) {
             Scanner scanner = new Scanner(System.in);
             String name = scanner.nextLine();
             if (userDao.checkExistenceUser(name)) {
                 currentUser = userDao.getUserByName(name);
-                break;
+                return true;
             } else {
-                System.out.println("Пользователя с таким именем не существует! Попробуйте еще раз:");
-            }
+                System.out.println("Пользователя с таким именем не существует! Попробуйте еще раз или зарегистрируйтесь");
+                return false;
         }
     }
 
@@ -137,7 +136,7 @@ public class Chat {
 
     public void deleteUser() {
         System.out.println("Введите имя пользователя, которого хотите удалить:");
-        while (true) {
+//        while (true) {
             Scanner scanner = new Scanner(System.in);
             String name = scanner.nextLine();
             if (userDao.checkExistenceUser(name)) {
@@ -157,4 +156,4 @@ public class Chat {
             }
         }
     }
-}
+//}

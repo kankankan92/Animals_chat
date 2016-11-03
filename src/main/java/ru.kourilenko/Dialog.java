@@ -13,33 +13,36 @@ public class Dialog {
                     chat.addUser();
                     break;
                 case "2":
-                    chat.loginUser();
-                    lable:
-                    while (true) {
-                        System.out.println("1.Написать конкретному пользователю\n2.Написать всем из своей группы\n3.Написать всем из чужой группы\n4.Написать всем\n5.Прочитать свои сообщения\n6.Выйти");
-                        switch (scan.nextLine()) {
-                            case "1":
-                                chat.writeSpecificBrow();
-                                break;
-                            case "2":
-                                chat.writeMyGroup();
-                                break;
-                            case "3":
-                                 chat.writeOtherGroup();
-                                break;
-                            case "4":
-                                chat.writeAllUsers();
-                                break;
-                            case "5":
-                                chat.readMessages();
-                                break;
-                            case "6":
-                                chat.logOutUser();
-                                break lable;
-                            default:
+                    if (chat.loginUser()) {
+                        lable:
+                        while (true) {
+                            System.out.println("1.Написать конкретному пользователю\n2.Написать всем из своей группы\n3.Написать всем из чужой группы\n4.Написать всем\n5.Прочитать свои сообщения\n6.Выйти");
+                            switch (scan.nextLine()) {
+                                case "1":
+                                    chat.writeSpecificBrow();
+                                    break;
+                                case "2":
+                                    chat.writeMyGroup();
+                                    break;
+                                case "3":
+                                    chat.writeOtherGroup();
+                                    break;
+                                case "4":
+                                    chat.writeAllUsers();
+                                    break;
+                                case "5":
+                                    chat.readMessages();
+                                    break;
+                                case "6":
+                                    chat.logOutUser();
+                                    break lable;
+                                default:
+                            }
                         }
+                        break;
+                    }else{
+                        break;
                     }
-                    break;
                 case "3":
                     chat.deleteUser();
                     break;
